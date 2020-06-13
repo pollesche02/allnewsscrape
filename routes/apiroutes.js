@@ -3,6 +3,8 @@ var cheerio = require("cheerio");
 var axios = require("axios");
 function apiroutes(app) {
   app.get("/scrape", function (req, res) {
+
+    
     axios
       .get("https://www.news18.com/newstopics/baking.html")
       .then(function (results) {
