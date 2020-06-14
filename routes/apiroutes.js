@@ -2,9 +2,10 @@ var db = require("../models");
 var cheerio = require("cheerio");
 var axios = require("axios");
 function apiroutes(app) {
+  app.get("/", function (req,res) {
+    res.render("index");
+  });
   app.get("/scrape", function (req, res) {
-
-    
     axios
       .get("https://www.news18.com/newstopics/baking.html")
       .then(function (results) {
@@ -31,9 +32,9 @@ function apiroutes(app) {
       });
   });
 
-  app.get("/", function (req,res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
-  });
+  // app.get("/", function (req,res) {
+  //   res.render("index");
+  // });
 
 
   app.get("/all", function (req, res) {

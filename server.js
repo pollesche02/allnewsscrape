@@ -1,8 +1,8 @@
 var express = require("express");
- var expresshandlebars = require("express-handlebars") 
+var expresshandlebars = require("express-handlebars") 
 var logger = require("morgan");
 var mongoose = require("mongoose");
- 
+
 
 //axios is the http library just like jquery ajax it can work with both client and server
 
@@ -27,9 +27,15 @@ apiroutes(app)
 
 
 
- mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/allNewsScrape")    ;
+ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/allNewsScrape");
+
+ app.get("/", function(req, res) {
+     res.render("index.handlebars");
+ })
 
 //connect to moongoose db
+
+
 
 app.listen(PORT, function(){
     console.log("app is listening on http://localhost:" + PORT);
