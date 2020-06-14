@@ -23,8 +23,8 @@ $("#headline-sort").on("click", function(){
       for (var i = 0; i < data.length; i ++) {
         $("#tableBody").append(("<tr><td>" + data[i].title + "</td>" + 
         "<td>" + data[i].summary +"<td><a href='" + data[i].link + "'>" + data[i].link + "</a></td>"
-         + "<td><img src='" + data[i].image +  " '/></td>" + "</td></tr>");
-      }
-    })
+         + "<td><img src='" + data[i].image +  " '/></td>" + "</td></tr>"));
+      };
+    });
   
   });

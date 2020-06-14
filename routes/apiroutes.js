@@ -30,5 +30,31 @@ function apiroutes(app) {
         });
       });
   });
+
+  app.get("/", function (req,res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+  });
+
+
+  app.get("/all", function (req, res) {
+    db.allnewsscrape.find({}, function (err, found) {
+      if (err) {
+        console.log(err)
+      } else {
+        res.json(found)
+      }
+    });
+  });
+
+  app.get("/title", function(req, res) {
+    db.allnewsscrape.find().sort({ title: 1 }, function(error, found) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        res.send(found);
+      }
+    });
+  });
 }
 module.exports = apiroutes;

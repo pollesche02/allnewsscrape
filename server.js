@@ -8,7 +8,8 @@ var mongoose = require("mongoose");
 
  
  
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
+
 var app = express();
 
 app.use(logger("dev"));
