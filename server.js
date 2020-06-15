@@ -29,9 +29,9 @@ apiroutes(app)
 
  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/allNewsScrape");
 
- app.get("/", function(req, res) {
-     res.render("index.handlebars");
- })
+//  app.get("/", function(req, res) {
+//      res.render("index.handlebars");
+//  })
 
 //connect to moongoose db
 

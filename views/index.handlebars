@@ -12,9 +12,16 @@
                 <th id="image"> Image </th>
             </tr>
         </thread>
-        <tableBody id="tableBody">
-            <!--results go here -->
-        </tableBody>
+       <tbody>
+                {{#each articles}}
+                    <tr>
+                        <td> {{{Headline}}}</td>
+                        <td> {{{Summary}}}</td>
+                        <td> {{{Link}}} </td>
+                        <td> <img src={{{Image}}}> </td>
+                    </tr>
+                {{/each}}
+            </tbody>
     </table>
 
 
