@@ -6,15 +6,16 @@ function apiroutes(app) {
   
   app.get("/", function (req,res) {
     console.log("GET....")
-    db.Article.find({})
+    db.Article.find({Save:false})
     .then(function(dbArticle) {
       console.log(dbArticle)
-      var articles = dbARticle.map(elem => {
+      var articles = dbArticle.map(elem => {
         return {
           Headline: elem.Headline,
           Summary: elem.Summary,
           URL: elem.URL,
-          Image: elem.Image
+          Image: elem.Image,
+          id: elem._id
         }
       })
       var hbsObject = {
@@ -22,10 +23,39 @@ function apiroutes(app) {
       }
       console.log("................hbsObject")
       console.log(hbsObject)
-      res.render("index", hbsObject);
+   //   res.json(articles)
+     res.render("index", hbsObject);
     })
   });
     
+
+
+  app.get("/savearticles", function (req,res) {
+    console.log("GET....")
+    db.Article.find({Save:true})
+    .then(function(dbArticle) {
+      console.log(dbArticle)
+      var articles = dbArticle.map(elem => {
+        return {
+          Headline: elem.Headline,
+          Summary: elem.Summary,
+          URL: elem.URL,
+          Image: elem.Image,
+          id: elem._id
+        }
+      })
+      var hbsObject = {
+        articles: articles
+      }
+      console.log("................hbsObject")
+      console.log(hbsObject)
+   //   res.json(articles)
+     res.render("savearticles", hbsObject);
+    })
+  });
+    
+
+
   app.get("/scrape", function (req, res) {
     console.log("scrape")
     axios
@@ -54,6 +84,21 @@ function apiroutes(app) {
       });
   });
 
+
+  app.put("/api/articles/:id", function(req,res){
+    console.log(req.params.id)
+    db.Article.update({_id:req.params.id},{Save:true}).then(function(results){
+      res.json(results)
+    })
+  })
+
+  app.delete("/api/articles/:id", function(req,res){
+    db.Article.remove({_id:req.params.id}).then(function(results){
+      res.json(results)
+    })
+  })
+
+
   // app.get("/", function (req,res) {
   //   res.render("index");
   // });
@@ -79,5 +124,10 @@ function apiroutes(app) {
       }
     });
   });
+
+
+
+
+
 }
 module.exports = apiroutes;
