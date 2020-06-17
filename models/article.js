@@ -6,6 +6,7 @@ var articleSchema = new Schema ({
     URL: {type: String, required: true},
     Image: {type: String, required: true},
     Save: {type: Boolean, default: false},
+    Comments: {type: String, required: false},
     Note: [{
         type: Schema.Types.ObjectId,
         ref: "Note"

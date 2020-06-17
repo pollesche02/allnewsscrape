@@ -11,10 +11,18 @@
             <a href={{URL}}>
                 <h3> {{Headline}}</h3>
             </a>
-
+  <form>
             <p>{{Summary}}</p>
-            <button data-id = {{id}} class = "savebtn"> Save </button>
+        <ul>
+                {{#each comments}}
+          <li>  {{this}}</li> //This would be the value of each DATE in the array
+                {{/each}} 
+                </ul> 
+            <button data-id = {{id}} class = "commentbtn"> Comment </button> <br> <br>
+           <textarea rows="4" cols="50" name="comment" form="usrform">
+Enter text here...</textarea> 
         </div>
+ </form>
 
 
 
@@ -23,6 +31,6 @@
 
 
 </div>
-
+<br>
 
 

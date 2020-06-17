@@ -23,4 +23,14 @@ $(".deletebtn").on("click", function (){
   })
 })
 
+$(".commentbtn").on("click", function (){
+  var id = $(this).attr("data-id")
+  $.ajax({
+    url: "/api/articles/" + id,
+    method: "Comment"
+  }).then(function(data){
+    location.reload()
+  })
+})
+
 
